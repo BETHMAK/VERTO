@@ -23,6 +23,8 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/programs', programRoutes);
 app.use('/api/documents', documentRoutes);
 app.use('/api/applications', applicationRoutes);
+app.use('/api/programs', require('./routes/programRoutes'));
+app.use('/api/interviews', require('./routes/interviewRoutes'));
 
 
 mongoose.connect(process.env.MONGO_URI)

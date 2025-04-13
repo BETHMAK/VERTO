@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 
-const interviewSchema = new mongoose.Schema({
-  applicantId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Applicant',
-    required: true
-  },
+const InterviewSchema = new mongoose.Schema({
+  applicantId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  programId: { type: mongoose.Schema.Types.ObjectId, ref: 'Program', required: true },
   date: { type: Date, required: true },
-  time: { type: String, required: true },
-  confirmed: { type: Boolean, default: false }
+  confirmed: { type: Boolean, default: false },
+  notes: { type: String }
 });
 
-module.exports = mongoose.model('Interview', interviewSchema);
+module.exports = mongoose.model('Interview', InterviewSchema);
