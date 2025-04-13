@@ -4,7 +4,8 @@ const programSchema = new mongoose.Schema({
   title: { type: String, required: true },
   level: { type: String, enum: ['Vocational', 'Undergraduate', 'Postgraduate'], required: true },
   description: String,
-  deadline: Date
+  deadline: Date,
+  name: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Program', programSchema);
