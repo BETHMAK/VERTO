@@ -25,6 +25,7 @@ app.use('/api/documents', documentRoutes);
 app.use('/api/applications', applicationRoutes);
 app.use('/api/programs', require('./routes/programRoutes'));
 app.use('/api/interviews', require('./routes/interviewRoutes'));
+app.use('/api/results', require('./routes/resultRoutes'));
 
 
 mongoose.connect(process.env.MONGO_URI)
