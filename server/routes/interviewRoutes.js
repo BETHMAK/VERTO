@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Interview = require('../models/Interview');
+const sendMail = require('../utils/email');
 
 // Create interview slot
 router.post('/create', async (req, res) => {
@@ -10,6 +11,13 @@ router.post('/create', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+  
+  await sendMail({
+    to: 'applicant@example.com', // Replace with dynamic applicant email from DB
+    subject: 'Interview Scheduled',
+    text: `Dear applicant, your interview is scheduled on ${req.body.date} at ${req.body.time}.`,
+    html: `<p><strong>Interview Date:</strong> ${req.body.date}</p><p><strong>Time:</strong> ${req.body.time}</p>`
+  });
 });
 
 // Get interview slots for applicant
@@ -29,6 +37,14 @@ router.put('/confirm/:id', async (req, res) => {
     { new: true }
   );
   res.json(updated);
+ 
+await sendMail({
+    to: 'admin@example.com', // Replace with actual admin
+    subject: 'Interview Confirmed',
+    text: `The applicant confirmed the interview scheduled on ${req.body.date} at ${req.body.time}.`,
+    html: `<p><strong>Confirmed Interview:</strong> ${req.body.date} at ${req.body.time}</p>`
+  });
+  
 });
 
 module.exports = router;
