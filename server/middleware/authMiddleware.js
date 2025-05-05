@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
-module.exports = function (req, res, next) {
+function verifyAdmin(req, res, next) {
   const token = req.header('Authorization');
 
   if (!token) return res.status(401).json({ msg: 'Access Denied' });
@@ -13,4 +13,6 @@ module.exports = function (req, res, next) {
   } catch (err) {
     res.status(400).json({ msg: 'Invalid Token' });
   }
-};
+}
+
+module.exports = { verifyAdmin };
