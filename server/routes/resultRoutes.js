@@ -1,4 +1,5 @@
-const express = require('express');
+//resultRoutes.js
+const express = require('express'); 
 const router = express.Router();
 const Result = require('../models/Result');
 const User = require('../models/User');
@@ -35,3 +36,5 @@ router.put('/status/:id', async (req, res) => {
 
   res.json(result);
 });
+
+module.exports = router;

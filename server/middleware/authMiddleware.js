@@ -1,8 +1,9 @@
+//authMiddleware.js
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
-function verifyAdmin(req, res, next) {
-  const token = req.header('Authorization');
+function authMiddleware(req, res, next) {
+  const token = req.header('Authorization')?.split(' ')[1]; // for "Bearer <token>" format
 
   if (!token) return res.status(401).json({ msg: 'Access Denied' });
 
@@ -15,4 +16,12 @@ function verifyAdmin(req, res, next) {
   }
 }
 
-module.exports = { verifyAdmin };
+function verifyAdmin(req, res, next) {
+  if (req.user?.role !== 'admin') {
+    return res.status(403).json({ msg: 'Admin access only' });
+  }
+  next();
+}
+
+module.exports = authMiddleware; // 👈 This is what applicantRoutes expects
+module.exports.verifyAdmin = verifyAdmin; // 👈 You still export admin check for oth

@@ -1,3 +1,4 @@
+//applicationRoutes.js
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/authMiddleware');
@@ -25,3 +26,4 @@ router.get('/', auth, async (req, res) => {
     res.status(500).json({ msg: err.message });
   }
 });
+module.exports = router;
