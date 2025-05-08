@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import API from '../utils/api';
+import API from '../../utils/api';
 
 const MyApplications = () => {
   const [applications, setApplications] = useState([]);

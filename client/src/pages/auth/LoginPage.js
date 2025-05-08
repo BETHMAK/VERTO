@@ -12,7 +12,8 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-      const { token, role } = res.data;
+      const { token, user: { role } } = res.data;
+
 
       // Save JWT token
       localStorage.setItem('token', token);

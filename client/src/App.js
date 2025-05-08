@@ -1,8 +1,8 @@
 import React from 'react';
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/auth/RegisterPage';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import ApplicantDashboard from './pages/ApplicantDashboard';
+import LoginPage from './pages/auth/LoginPage';
+import DashboardLayout from './components/applicant/DashboardLayout';
 import AdminLayout from './components/admin/AdminLayout';
 import ApplicantsList from './pages/admin/ApplicantsList';
 import ApplicantProfile from './pages/admin/ApplicantProfile';
@@ -16,7 +16,8 @@ function App() {
       <Route path="/register" element={<RegisterPage />} />
       {/* 👇 Your existing routes */}
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/dashboard/*" element={<ApplicantDashboard />} />
+      <Route path="/admin/*" element={<AdminLayout />} />
+      <Route path="/applicant/*" element={<DashboardLayout/>} />
       <Route path="/admin" element={<AdminLayout><ApplicantsList /></AdminLayout>} />
       <Route path="/admin/applicants" element={<AdminLayout><ApplicantsList /></AdminLayout>} />
       <Route path="/admin/applicants/:id" element={<AdminLayout><ApplicantProfile /></AdminLayout>} />

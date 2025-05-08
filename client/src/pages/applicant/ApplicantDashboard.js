@@ -1,9 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import DashboardLayout from '../components/DashboardLayout';
-import ProgramList from '../components/ProgramList';
-import UploadDocuments from '../components/UploadDocuments';
-import MyApplications from '../components/MyApplications';
+
+
+import DashboardLayout from '../../components/applicant/DashboardLayout';
+import ProgramList from '../../components/applicant/ProgramList';
+import UploadDocuments from '../../components/applicant/UploadDocuments';
+import MyApplications from '../../components/applicant/MyApplications';
+
+
 
 const ApplicantDashboard = () => {
   return (
